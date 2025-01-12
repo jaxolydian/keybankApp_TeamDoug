@@ -3,7 +3,7 @@ ___
 **Lead Programmer**
   - Jackson Philips
 
-**Lead Design**
+**Lead Design/Website Programmer**
   - Daniel O'Brien
 
 **Thinker**
