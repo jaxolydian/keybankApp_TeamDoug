@@ -29,7 +29,6 @@ import javax.swing.JToolBar;
 import javax.swing.WindowConstants;
 
 import keybankApp.colors.Theme;
-import keybankApp.data.DATA;
 
 public class App implements ActionListener {
 
@@ -137,7 +136,6 @@ public class App implements ActionListener {
 			l4dig.setFont(kbTheme.getKbCode());
 			moneyAmt.setFont(kbTheme.getKbCode());
 			openAccWindow.setFont(kbTheme.getKbBody());
-			DATA.datalist.add(user);
 			openAccButtons.add(openAccWindow);
 			openAccWindow.addActionListener(this);
 			accountPanelConstraints.gridx = 0;
