@@ -92,6 +92,7 @@ public class UserInputRegions implements ActionListener {
 		ArrayList<String> fn = new ArrayList<String>();
 		ArrayList<String> ln = new ArrayList<String>();
 		ArrayList<Integer> tagTag = new ArrayList<Integer>();
+		ArrayList<Double> dollaroon = new ArrayList<Double>();
 		if (e.getSource().equals(confirm)) {
 			File filePath = new File(filepathArea.getText());
 			if (!filePath.isFile()) {
@@ -110,23 +111,26 @@ public class UserInputRegions implements ActionListener {
 		            		
 		            	} 
 		            	if (allLines.get(i).contains("ACC=")) {
-		            		accountNames.add(allLines.get(i).substring(3));
+		            		accountNames.add(allLines.get(i).substring(4));
 		            	}
-		            	if (allLines.get(i).contains("CC=")) {
-		            		ccNumbers.add(allLines.get(i).substring(2));
+		            	else if (allLines.get(i).contains("CC=")) {
+		            		ccNumbers.add(allLines.get(i).substring(3));
 		            	} 
 		            	if (allLines.get(i).contains("FN=")) {
-		            		fn.add(allLines.get(i).substring(2));
+		            		fn.add(allLines.get(i).substring(3));
 		            	}
 		            	if (allLines.get(i).contains("LN=")) {
-		            		ln.add(allLines.get(i).substring(2));
+		            		ln.add(allLines.get(i).substring(3));
+		            	}
+		            	if (allLines.get(i).contains("M=")) {
+		            		dollaroon.add(Double.parseDouble(allLines.get(i).substring(2)));
 		            	}
 		            	
 		            }
 		        } catch (IOException e2) {
 		            e2.printStackTrace();
 		        }
-			new App(tagTag, accountNames, ccNumbers, fn, ln);
+			new App(tagTag, accountNames, ccNumbers, fn, ln, dollaroon);
 			frame.dispose();
 			}
 		}
