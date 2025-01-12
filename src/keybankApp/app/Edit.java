@@ -208,7 +208,7 @@ public class Edit implements ActionListener {
 		            	} catch (Exception e3) {
 		            		System.out.println("Failed: " + e3.getMessage());
 		            	}
-						if (allLinesNonList.contains("CCV="+ccv.get(accNumber))) {
+						if (allLinesNonList.contains("CCV="+ccv.get(accNo))) {
 							if (allLinesNonList.contains("PIN="+pin1.getText())) {
 								System.out.println("Give the go ahead");
 								check = true;
@@ -222,7 +222,7 @@ public class Edit implements ActionListener {
 	            Files.deleteIfExists(path);
 	            System.out.println("File deleted successfully.");
 	            try (FileWriter replacement = new FileWriter(path.toString())) {
-	            	replacement.write("TAG="+accNumber+"\n");
+	            	replacement.write("TAG="+accNo+"\n");
 	            	replacement.write("ACC="+ACCOUNT_NAMES.get(accNumber)+"\n");
 	            	replacement.write("CC="+ccn.get(accNumber)+"\n");
 	            	replacement.write("FN="+firstName.get(accNumber)+"\n");
