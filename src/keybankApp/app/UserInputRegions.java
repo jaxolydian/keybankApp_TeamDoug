@@ -58,7 +58,7 @@ public class UserInputRegions implements ActionListener {
 		g.ipady = 0;
 		frame.setTitle("Setup");
 		frame.setMinimumSize(new Dimension(680-200, 720-200));
-		frame.setSize(680-200, 720-200 );
+		frame.setSize(680-200, 720-200);
 		frame.setResizable(false);
 		confirm.addActionListener(this);
 		holdingPanel.setBackground(kbTheme.getKbRed());
