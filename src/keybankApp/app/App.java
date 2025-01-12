@@ -44,6 +44,7 @@ public class App implements ActionListener {
 	JButton deposit = new JButton("Deposit");
 	JButton transfer = new JButton("Transfer");
 	JButton log = new JButton("Logs");
+	JButton edit = new JButton("Edit PIN");
 	ArrayList<String> ACCOUNT_NAMES = new ArrayList<String>();
 	ArrayList<String> creditCardNumber = new ArrayList<String>();
 	ArrayList<String> firstName = new ArrayList<String>();
@@ -66,6 +67,7 @@ public class App implements ActionListener {
 		System.out.println(AMOUNT_OF_ACCOUNTS);
 		//imaging
 		try {
+			
 			BufferedImage lockBankLogo = ImageIO.read(new File("src/imgs/lockbank3KB.png"));
 			ImageIcon image = new ImageIcon(lockBankLogo);
 			kbLogo.setIcon(image);
@@ -92,9 +94,11 @@ public class App implements ActionListener {
 		panelScrollability.setPreferredSize(new Dimension(255, 612));
 		holdingPanel.add(panelScrollability);
 		toolbar.setFloatable(false);
+		bottomPanel.add(edit);
 		bottomPanel.add(deposit);
 		bottomPanel.add(transfer);
 		bottomPanel.add(log);
+		edit.addActionListener(this);
 		bottomPanel.setBackground(Color.white);
 		kbLogo.setFont(kbTheme.getKbHeader());
 		// frame.setMinimumSize(new Dimension(860, 700));
@@ -161,7 +165,11 @@ public class App implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(openAccButtons.get(0))) {
+		if (e.getSource().equals(edit)) {
+			new Edit(creditCardNumber, ccvs, money, pins);
+	   }
+		
+		else if (e.getSource().equals(openAccButtons.get(0))) {
 			System.out.println("Account1");
 			new AccountAdvanced(0, (firstName.get(0)+" "+lastName.get(0)), creditCardNumber.get(0), ccvs.get(0), money.get(0), pins.get(0));
 		} else if (e.getSource().equals(openAccButtons.get(1))) {
@@ -192,8 +200,6 @@ public class App implements ActionListener {
 			System.out.println("Account10");
 			new AccountAdvanced(9, (firstName.get(9)+" "+lastName.get(9)), creditCardNumber.get(9), ccvs.get(9), money.get(9), pins.get(9));
 		}
-//		} if (e.getSource().equals(add)) {
-//			new AddNewAccount();
-//		}
+
 	}
 }

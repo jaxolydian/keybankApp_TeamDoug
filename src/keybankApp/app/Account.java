@@ -1,7 +1,5 @@
 package keybankApp.app;
 
-import java.util.ArrayList;
-
 public class Account {
 	private boolean isActive;
 	private final String ccn = "1234123412341234";
@@ -62,5 +60,8 @@ public class Account {
 	}
 	public void setPin(int pin) {
 		this.pin = pin;
+	}
+	public String getCcn() {
+		return ccn;
 	}
 }
