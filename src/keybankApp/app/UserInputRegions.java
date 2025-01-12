@@ -36,12 +36,12 @@ public class UserInputRegions implements ActionListener {
 	GridBagConstraints c = new GridBagConstraints();
 	JPanel discussingTheFilepath = new JPanel(new GridBagLayout());
 	JLabel label = new JLabel("Enter filepath: ");
-	JLabel errMessage = new JLabel("Error");
+	JLabel errMessage = new JLabel("(Default directory: src/data/file.txt)");
 	JTextField filepathArea = new JTextField();
 	JButton confirm = new JButton("Confirm");
 	GridBagConstraints g = new GridBagConstraints();
 	public UserInputRegions() /* Starting account setup */ {
-		errMessage.setVisible(false);
+		errMessage.setVisible(true);
 		c.insets = new Insets(0,0,0,0);
 		c.gridx = 0;
 		c.gridy = 0;
@@ -56,14 +56,14 @@ public class UserInputRegions implements ActionListener {
 		g.gridy = 0;
 		g.ipadx = 0;
 		g.ipady = 0;
-		frame.setTitle("LockBank");
-		frame.setMinimumSize(new Dimension(680, 720));
-		frame.setSize(680, 720);
+		frame.setTitle("Setup");
+		frame.setMinimumSize(new Dimension(680-200, 720-200));
+		frame.setSize(680-200, 720-200 );
 		frame.setResizable(false);
 		confirm.addActionListener(this);
 		holdingPanel.setBackground(kbTheme.getKbRed());
-		holdingPanel2.setMinimumSize(new Dimension(670, 700));
-		holdingPanel2.setPreferredSize(new Dimension(670, 682));
+		holdingPanel2.setMinimumSize(new Dimension(670-200, 700-200));
+		holdingPanel2.setPreferredSize(new Dimension(670-200, 682-200));
 		holdingPanel.add(holdingPanel2, BorderLayout.CENTER);
 		discussingTheFilepath.setMinimumSize(new Dimension(295, 50));
 		discussingTheFilepath.setPreferredSize(new Dimension(295, 50));
@@ -112,7 +112,7 @@ public class UserInputRegions implements ActionListener {
 		            }
 		            for (int i = 0; i < allLines.size(); i++) {
 		            	try {
-		            		errMessage.setVisible(false);
+		            		
 		            	if (allLines.get(i).contains("TAG=")) {
 		            		if (tagTag.size() >= 0 && tagTag.size() < 10) {
 		            			tagTag.add(Integer.parseInt(allLines.get(i).substring(4)));
@@ -143,7 +143,7 @@ public class UserInputRegions implements ActionListener {
 				            } else;
 		            	} catch (Exception e9) {
 		            		e9.printStackTrace();
-		            		errMessage.setVisible(true);
+		            		
 		            	}
 		            }
 		        } catch (IOException e2) {
