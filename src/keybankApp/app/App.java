@@ -107,6 +107,7 @@ public class App implements ActionListener {
 		bottomPanel.add(log);
 		bottomPanel.add(exit);
 		edit.addActionListener(this);
+		deposit.addActionListener(this);
 		exit.addActionListener(this);
 		bottomPanel.setBackground(Color.white);
 		kbLogo.setFont(kbTheme.getKbHeader());
@@ -176,6 +177,8 @@ public class App implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(edit)) {
 			new Edit(path, amt, ACCOUNT_NAMES, creditCardNumber, firstName, lastName, ccvs, money, pins);
+	   } else if (e.getSource().equals(deposit)) {
+			new Deposit(path, amt, ACCOUNT_NAMES, creditCardNumber, firstName, lastName, ccvs, money, pins);
 	   }
 		else if (e.getSource().equals(exit)) {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
