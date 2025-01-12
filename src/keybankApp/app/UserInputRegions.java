@@ -94,6 +94,7 @@ public class UserInputRegions implements ActionListener {
 		ArrayList<Integer> tagTag = new ArrayList<Integer>();
 		ArrayList<Double> dollaroon = new ArrayList<Double>();
 		ArrayList<Integer> ccv = new ArrayList<Integer>();
+		ArrayList<Integer> pin = new ArrayList<Integer>();
 		if (e.getSource().equals(confirm)) {
 			File filePath = new File(filepathArea.getText());
 			if (!filePath.isFile()) {
@@ -108,9 +109,11 @@ public class UserInputRegions implements ActionListener {
 		            }
 		            for (int i = 0; i < allLines.size(); i++) {
 		            	if (allLines.get(i).contains("TAG=")) {
-		            		tagTag.add(Integer.parseInt(allLines.get(i).substring(4)));
-		            		
-		            	} 
+		            		if (tagTag.size() >= 0 && tagTag.size() < 10) {
+		            			tagTag.add(Integer.parseInt(allLines.get(i).substring(4)));
+		            		}
+		            	
+		            	} else
 		            	if (allLines.get(i).contains("ACC=")) {
 		            		accountNames.add(allLines.get(i).substring(4));
 		            	} else
@@ -126,15 +129,19 @@ public class UserInputRegions implements ActionListener {
 		            	if (allLines.get(i).contains("M=")) {
 		            		dollaroon.add(Double.parseDouble(allLines.get(i).substring(2)));
 		            	} else
-		            	if (allLines.get(i).contains("CCV=")) {
-		            		ccv.add(Integer.parseInt(allLines.get(i).substring(4)));
-		            	}
+		            		if (allLines.get(i).contains("CCV=")) {
+			            		ccv.add(Integer.parseInt(allLines.get(i).substring(4)));
+			            	}
+		            		else
+		            	if (allLines.get(i).contains("PIN=")) {
+				            	pin.add(Integer.parseInt(allLines.get(i).substring(4)));
+				            }
 		            	
 		            }
 		        } catch (IOException e2) {
 		            e2.printStackTrace();
 		        }
-			new App(tagTag, accountNames, ccNumbers, fn, ln, dollaroon, ccv);
+			new App(tagTag, accountNames, ccNumbers, fn, ln, dollaroon, ccv, pin);
 			frame.dispose();
 			}
 		}
