@@ -46,9 +46,11 @@ public class App implements ActionListener {
 	JButton transfer = new JButton("Transfer");
 	JButton log = new JButton("Logs");
 	
-	public App() 
+	public App(ArrayList<Integer> amt, ArrayList<String> ACCOUNT_NAMES, ArrayList<String> creditCardNumber, 
+			ArrayList<String> firstName, ArrayList<String> lastName) 
 	{
-		AMOUNT_OF_ACCOUNTS = 10;
+		AMOUNT_OF_ACCOUNTS = amt.size();
+		System.out.println(AMOUNT_OF_ACCOUNTS);
 		//imaging
 		try {
 			BufferedImage lockBankLogo = ImageIO.read(new File("src/imgs/lockbank3KB.png"));
@@ -102,7 +104,7 @@ public class App implements ActionListener {
 		for (int i = 0; i < amt; i++) { // grab the amount from a txt file (Nahhh)
 			Account user = new Account(1216, "Bren", "Chen", 216);
 			JPanel accountPanel = new JPanel(new GridBagLayout());
-			JLabel accountName = new JLabel("Account "+(i+1));
+			JLabel accountName = new JLabel();
 			JLabel l4dig = new JLabel("**** "+user.getL4Dig());
 			JLabel moneyAmt = new JLabel("$####.##"); // get money amount from checking acc of this guy
 			JButton openAccWindow = new JButton("Details");
@@ -153,25 +155,31 @@ public class App implements ActionListener {
 			AccountAdvanced a = new AccountAdvanced(0);
 		} else if (e.getSource().equals(openAccButtons.get(1))) {
 			System.out.println("Account2");
+			AccountAdvanced a = new AccountAdvanced(1);
 		} else if (e.getSource().equals(openAccButtons.get(2))) {
 			System.out.println("Account3");
+			AccountAdvanced a = new AccountAdvanced(2);
 		} else if (e.getSource().equals(openAccButtons.get(3))) {
 			System.out.println("Account4");
+			AccountAdvanced a = new AccountAdvanced(3);
 		} else if (e.getSource().equals(openAccButtons.get(4))) {
 			System.out.println("Account5");
+			AccountAdvanced a = new AccountAdvanced(4);
 		} else if (e.getSource().equals(openAccButtons.get(5))) {
 			System.out.println("Account6");
+			AccountAdvanced a = new AccountAdvanced(5);
 		} else if (e.getSource().equals(openAccButtons.get(6))) {
 			System.out.println("Account7");
-			
+			AccountAdvanced a = new AccountAdvanced(6);
 		} else if (e.getSource().equals(openAccButtons.get(7))) {
 			System.out.println("Account8");
-			
+			AccountAdvanced a = new AccountAdvanced(7);
 		} else if (e.getSource().equals(openAccButtons.get(8))) {
 			System.out.println("Account9");
-			
+			AccountAdvanced a = new AccountAdvanced(8);
 		} else if (e.getSource().equals(openAccButtons.get(9))) {
 			System.out.println("Account10");
+			AccountAdvanced a = new AccountAdvanced(9);
 			
 		} else if (e.getSource().equals(add)) {
 			new AddNewAccount();
