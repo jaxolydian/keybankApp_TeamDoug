@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -32,7 +33,7 @@ import keybankApp.data.DATA;
 public class App implements ActionListener {
 
 	Theme kbTheme = new Theme();
-	JFrame frame = new JFrame();
+	static JFrame frame = new JFrame();
 	JPanel holdingPanel = new JPanel();
 	JToolBar toolbar = new JToolBar("LockBank");
 	JLabel kbLogo = new JLabel();
@@ -45,6 +46,7 @@ public class App implements ActionListener {
 	JButton transfer = new JButton("Transfer");
 	JButton log = new JButton("Logs");
 	JButton edit = new JButton("Edit PIN");
+	JButton exit = new JButton("Exit");
 	ArrayList<String> ACCOUNT_NAMES = new ArrayList<String>();
 	ArrayList<String> creditCardNumber = new ArrayList<String>();
 	ArrayList<String> firstName = new ArrayList<String>();
@@ -52,8 +54,10 @@ public class App implements ActionListener {
 	ArrayList<Double> money = new ArrayList<Double>();
 	ArrayList<Integer> ccvs = new ArrayList<Integer>();
 	ArrayList<Integer> pins = new ArrayList<Integer>();
+	ArrayList<Integer> amt = new ArrayList<Integer>();
+	Path path;
 	
-	public App(ArrayList<Integer> amt, ArrayList<String> ACCOUNT_NAMES, ArrayList<String> creditCardNumber, 
+	public App(Path path, ArrayList<Integer> amt, ArrayList<String> ACCOUNT_NAMES, ArrayList<String> creditCardNumber, 
 			ArrayList<String> firstName, ArrayList<String> lastName, ArrayList<Double> money, ArrayList<Integer> ccvs, ArrayList<Integer> pins) 
 	{ 
 		this.ACCOUNT_NAMES = ACCOUNT_NAMES;
@@ -63,7 +67,10 @@ public class App implements ActionListener {
 		this.money = money;
 		this.ccvs = ccvs;
 		this.pins = pins;
+		this.path = path;
+		this.amt = amt;
 		AMOUNT_OF_ACCOUNTS = amt.size();
+		
 		System.out.println(AMOUNT_OF_ACCOUNTS);
 		//imaging
 		try {
@@ -98,7 +105,9 @@ public class App implements ActionListener {
 		bottomPanel.add(deposit);
 		bottomPanel.add(transfer);
 		bottomPanel.add(log);
+		bottomPanel.add(exit);
 		edit.addActionListener(this);
+		exit.addActionListener(this);
 		bottomPanel.setBackground(Color.white);
 		kbLogo.setFont(kbTheme.getKbHeader());
 		// frame.setMinimumSize(new Dimension(860, 700));
@@ -110,7 +119,7 @@ public class App implements ActionListener {
 		holdingPanel.setBackground(kbTheme.getKbRed());
 		frame.add(holdingPanel);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	ArrayList<JButton> openAccButtons = new ArrayList<JButton>();
 	
@@ -166,8 +175,12 @@ public class App implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(edit)) {
-			new Edit(creditCardNumber, ccvs, money, pins);
+			new Edit(path, amt, ACCOUNT_NAMES, creditCardNumber, firstName, lastName, ccvs, money, pins);
 	   }
+		else if (e.getSource().equals(exit)) {
+			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			System.exit(0);
+		}
 		
 		else if (e.getSource().equals(openAccButtons.get(0))) {
 			System.out.println("Account1");

@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -106,7 +108,7 @@ public class UserInputRegions implements ActionListener {
 		            ArrayList<String> allLines = new ArrayList<String>();
 		            while ((line = br.readLine()) != null) {
 		            	allLines.add(line);
-		                System.out.println(line);
+		                
 		            }
 		            for (int i = 0; i < allLines.size(); i++) {
 		            	try {
@@ -147,7 +149,8 @@ public class UserInputRegions implements ActionListener {
 		        } catch (IOException e2) {
 		            e2.printStackTrace();
 		        }
-			new App(tagTag, accountNames, ccNumbers, fn, ln, dollaroon, ccv, pin);
+				Path path = Paths.get(filepathArea.getText());
+			new App(path, tagTag, accountNames, ccNumbers, fn, ln, dollaroon, ccv, pin);
 			frame.dispose();
 			}
 		}
