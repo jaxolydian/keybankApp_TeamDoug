@@ -40,9 +40,11 @@ public class AccountAdvanced {
 	JLabel ccvL = new JLabel("");
 	JLabel labelForMoney = new JLabel("Amount: ");
 	JLabel money = new JLabel("");
+	JLabel labelForPin = new JLabel("Pin #: ");
+	JLabel pin = new JLabel("");
 	JLabel tehTitall = new JLabel();
 	GridBagConstraints c = new GridBagConstraints();
-	public AccountAdvanced(int accountNumber, String name, String ccn, int ccv, double dollaBillz) {
+	public AccountAdvanced(int accountNumber, String name, String ccn, int ccv, double dollaBillz, int pinz) {
 		try {
 			BufferedImage lockBankLogo = ImageIO.read(new File("src/imgs/lockbank3KB.png"));
 			ImageIcon image = new ImageIcon(lockBankLogo);
@@ -94,6 +96,14 @@ public class AccountAdvanced {
 		money.setFont(kbTheme.getKbCode36());
 		money.setText("$"+dollaBillz);
 		tehCahd.add(money, cahd);
+		cahd.gridx = 0;
+		cahd.gridy = 4;
+		labelForPin.setFont(kbTheme.getKbBody36());
+		tehCahd.add(labelForPin, cahd);
+		cahd.gridx = 1;
+		pin.setFont(kbTheme.getKbCode36());
+		pin.setText(""+pinz);
+		tehCahd.add(pin, cahd);
 		System.out.println();
 		setAccNumber(accountNumber);
 		frame.setTitle("Details");

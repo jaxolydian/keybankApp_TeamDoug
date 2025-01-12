@@ -41,7 +41,6 @@ public class App implements ActionListener {
 	GridBagConstraints accountPanelConstraints = new GridBagConstraints();
 	GridBagConstraints accountConst = new GridBagConstraints();
 	JPanel bottomPanel = new JPanel();
-	JButton add = new JButton("Add Account");
 	JButton deposit = new JButton("Deposit");
 	JButton transfer = new JButton("Transfer");
 	JButton log = new JButton("Logs");
@@ -51,9 +50,10 @@ public class App implements ActionListener {
 	ArrayList<String> lastName = new ArrayList<String>();
 	ArrayList<Double> money = new ArrayList<Double>();
 	ArrayList<Integer> ccvs = new ArrayList<Integer>();
+	ArrayList<Integer> pins = new ArrayList<Integer>();
 	
 	public App(ArrayList<Integer> amt, ArrayList<String> ACCOUNT_NAMES, ArrayList<String> creditCardNumber, 
-			ArrayList<String> firstName, ArrayList<String> lastName, ArrayList<Double> money, ArrayList<Integer> ccvs) 
+			ArrayList<String> firstName, ArrayList<String> lastName, ArrayList<Double> money, ArrayList<Integer> ccvs, ArrayList<Integer> pins) 
 	{ 
 		this.ACCOUNT_NAMES = ACCOUNT_NAMES;
 		this.creditCardNumber = creditCardNumber;
@@ -61,6 +61,7 @@ public class App implements ActionListener {
 		this.lastName = lastName;
 		this.money = money;
 		this.ccvs = ccvs;
+		this.pins = pins;
 		AMOUNT_OF_ACCOUNTS = amt.size();
 		System.out.println(AMOUNT_OF_ACCOUNTS);
 		//imaging
@@ -91,12 +92,10 @@ public class App implements ActionListener {
 		panelScrollability.setPreferredSize(new Dimension(255, 612));
 		holdingPanel.add(panelScrollability);
 		toolbar.setFloatable(false);
-		bottomPanel.add(add);
 		bottomPanel.add(deposit);
 		bottomPanel.add(transfer);
 		bottomPanel.add(log);
 		bottomPanel.setBackground(Color.white);
-		add.addActionListener(this);
 		kbLogo.setFont(kbTheme.getKbHeader());
 		// frame.setMinimumSize(new Dimension(860, 700));
 		frame.setTitle("LockBank");
@@ -113,7 +112,7 @@ public class App implements ActionListener {
 	
 	public void processAccountPanel(GridBagConstraints accountConst, JPanel panelWithAccountsIn, int amt) {
 		for (int i = 0; i < amt; i++) { // grab the amount from a txt file (Nahhh)
-			Account user = new Account(true, creditCardNumber.get(i), firstName.get(i), lastName.get(i), 999);
+			Account user = new Account(true, creditCardNumber.get(i), firstName.get(i), lastName.get(i), ccvs.get(i), pins.get(i));
 			JPanel accountPanel = new JPanel(new GridBagLayout());
 			JLabel accountName = new JLabel(ACCOUNT_NAMES.get((i)));
 			JLabel l4dig = new JLabel("**** "+user.getL4Dig());
@@ -164,34 +163,34 @@ public class App implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(openAccButtons.get(0))) {
 			System.out.println("Account1");
-			AccountAdvanced a = new AccountAdvanced(0, (firstName.get(0)+" "+lastName.get(0)), creditCardNumber.get(0), ccvs.get(0), money.get(0));
+			new AccountAdvanced(0, (firstName.get(0)+" "+lastName.get(0)), creditCardNumber.get(0), ccvs.get(0), money.get(0), pins.get(0));
 		} else if (e.getSource().equals(openAccButtons.get(1))) {
 			System.out.println("Account2");
-			AccountAdvanced a = new AccountAdvanced(1, (firstName.get(1)+" "+lastName.get(1)), creditCardNumber.get(1), ccvs.get(1), money.get(1));
+			 new AccountAdvanced(1, (firstName.get(1)+" "+lastName.get(1)), creditCardNumber.get(1), ccvs.get(1), money.get(1), pins.get(1));
 		} else if (e.getSource().equals(openAccButtons.get(2))) {
 			System.out.println("Account3");
-			AccountAdvanced a = new AccountAdvanced(2, (firstName.get(2)+" "+lastName.get(2)), creditCardNumber.get(2), ccvs.get(2), money.get(2));
+			 new AccountAdvanced(2, (firstName.get(2)+" "+lastName.get(2)), creditCardNumber.get(2), ccvs.get(2), money.get(2), pins.get(2));
 		} else if (e.getSource().equals(openAccButtons.get(3))) {
 			System.out.println("Account4");
-			AccountAdvanced a = new AccountAdvanced(3, (firstName.get(3)+" "+lastName.get(3)), creditCardNumber.get(3), ccvs.get(3), money.get(3));
+			new AccountAdvanced(3, (firstName.get(3)+" "+lastName.get(3)), creditCardNumber.get(3), ccvs.get(3), money.get(3), pins.get(3));
 		} else if (e.getSource().equals(openAccButtons.get(4))) {
 			System.out.println("Account5");
-			AccountAdvanced a = new AccountAdvanced(4, (firstName.get(4)+" "+lastName.get(4)), creditCardNumber.get(4), ccvs.get(4), money.get(4));
+			new AccountAdvanced(4, (firstName.get(4)+" "+lastName.get(4)), creditCardNumber.get(4), ccvs.get(4), money.get(4), pins.get(4));
 		} else if (e.getSource().equals(openAccButtons.get(5))) {
 			System.out.println("Account6");
-			AccountAdvanced a = new AccountAdvanced(5, (firstName.get(5)+" "+lastName.get(5)), creditCardNumber.get(5), ccvs.get(5), money.get(5));
+			new AccountAdvanced(5, (firstName.get(5)+" "+lastName.get(5)), creditCardNumber.get(5), ccvs.get(5), money.get(5), pins.get(5));
 		} else if (e.getSource().equals(openAccButtons.get(6))) {
 			System.out.println("Account7");
-			AccountAdvanced a = new AccountAdvanced(6, (firstName.get(6)+" "+lastName.get(6)), creditCardNumber.get(6), ccvs.get(6), money.get(6));
+			new AccountAdvanced(6, (firstName.get(6)+" "+lastName.get(6)), creditCardNumber.get(6), ccvs.get(6), money.get(6), pins.get(6));
 		} else if (e.getSource().equals(openAccButtons.get(7))) {
 			System.out.println("Account8");
-			AccountAdvanced a = new AccountAdvanced(7, (firstName.get(7)+" "+lastName.get(7)), creditCardNumber.get(7), ccvs.get(7), money.get(7));
+			new AccountAdvanced(7, (firstName.get(7)+" "+lastName.get(7)), creditCardNumber.get(7), ccvs.get(7), money.get(7), pins.get(7));
 		} else if (e.getSource().equals(openAccButtons.get(8))) {
 			System.out.println("Account9");
-			AccountAdvanced a = new AccountAdvanced(8, (firstName.get(8)+" "+lastName.get(8)), creditCardNumber.get(8), ccvs.get(8), money.get(8));
+			 new AccountAdvanced(8, (firstName.get(8)+" "+lastName.get(8)), creditCardNumber.get(8), ccvs.get(8), money.get(8), pins.get(8));
 		} else if (e.getSource().equals(openAccButtons.get(9))) {
 			System.out.println("Account10");
-			AccountAdvanced a = new AccountAdvanced(9, (firstName.get(9)+" "+lastName.get(9)), creditCardNumber.get(9), ccvs.get(9), money.get(9));
+			new AccountAdvanced(9, (firstName.get(9)+" "+lastName.get(9)), creditCardNumber.get(9), ccvs.get(9), money.get(9), pins.get(9));
 		}
 //		} if (e.getSource().equals(add)) {
 //			new AddNewAccount();
