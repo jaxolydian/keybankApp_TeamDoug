@@ -6,5 +6,5 @@ ___
 **Lead Design/Website Programmer**
   - Daniel O'Brien
 
-**Thinker**
+**Chinese Thinker**
   - Brian Chen
