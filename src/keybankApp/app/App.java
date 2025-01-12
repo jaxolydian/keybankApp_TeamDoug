@@ -83,7 +83,7 @@ public class App implements ActionListener {
 		bottomPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
 		
 		panelWithAccountsIn.setLayout(new BoxLayout(panelWithAccountsIn, BoxLayout.PAGE_AXIS));
-		accountPanelConstraints.insets = new Insets(10,10,10,10);
+		accountPanelConstraints.insets = new Insets(5,5,5,5);
 		accountConst.insets = new Insets(0,10,0,10);
 		processAccountPanel(accountConst, panelWithAccountsIn, AMOUNT_OF_ACCOUNTS);
 		

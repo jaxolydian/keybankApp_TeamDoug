@@ -52,7 +52,7 @@ public class AccountAdvanced {
 		} catch (IOException err) {
 			System.err.println("lol ur bad");
 		}
-		tehTitall.setText("Account #"+(accountNumber+1));
+		tehTitall.setText("Account #"+(accountNumber));
 		c.insets = new Insets(0,0,0,0);
 		c.gridx = 0;
 		c.gridy = 0;
