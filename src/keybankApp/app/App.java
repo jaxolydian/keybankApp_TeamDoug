@@ -41,14 +41,24 @@ public class App implements ActionListener {
 	GridBagConstraints accountPanelConstraints = new GridBagConstraints();
 	GridBagConstraints accountConst = new GridBagConstraints();
 	JPanel bottomPanel = new JPanel();
-	JButton add = new JButton("Add");
+	JButton add = new JButton("Add Account");
 	JButton deposit = new JButton("Deposit");
 	JButton transfer = new JButton("Transfer");
 	JButton log = new JButton("Logs");
+	ArrayList<String> ACCOUNT_NAMES = new ArrayList<String>();
+	ArrayList<String> creditCardNumber = new ArrayList<String>();
+	ArrayList<String> firstName = new ArrayList<String>();
+	ArrayList<String> lastName = new ArrayList<String>();
+	ArrayList<Double> money = new ArrayList<Double>();
 	
 	public App(ArrayList<Integer> amt, ArrayList<String> ACCOUNT_NAMES, ArrayList<String> creditCardNumber, 
-			ArrayList<String> firstName, ArrayList<String> lastName) 
-	{
+			ArrayList<String> firstName, ArrayList<String> lastName, ArrayList<Double> money) 
+	{ 
+		this.ACCOUNT_NAMES = ACCOUNT_NAMES;
+		this.creditCardNumber = creditCardNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.money = money;
 		AMOUNT_OF_ACCOUNTS = amt.size();
 		System.out.println(AMOUNT_OF_ACCOUNTS);
 		//imaging
@@ -102,11 +112,12 @@ public class App implements ActionListener {
 	
 	public void processAccountPanel(GridBagConstraints accountConst, JPanel panelWithAccountsIn, int amt) {
 		for (int i = 0; i < amt; i++) { // grab the amount from a txt file (Nahhh)
-			Account user = new Account(1216, "Bren", "Chen", 216);
+			Account user = new Account(true, creditCardNumber.get(i), firstName.get(i), lastName.get(i), 999);
 			JPanel accountPanel = new JPanel(new GridBagLayout());
-			JLabel accountName = new JLabel();
+			JLabel accountName = new JLabel(ACCOUNT_NAMES.get((i)));
 			JLabel l4dig = new JLabel("**** "+user.getL4Dig());
-			JLabel moneyAmt = new JLabel("$####.##"); // get money amount from checking acc of this guy
+			
+			JLabel moneyAmt = new JLabel("$"+money.get(i)); // get money amount from checking acc of this guy
 			JButton openAccWindow = new JButton("Details");
 			accountName.setFont(kbTheme.getKbSubHead());
 			l4dig.setFont(kbTheme.getKbCode());
