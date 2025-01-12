@@ -11,8 +11,8 @@ Made during Hyland Hackathon 2025, this emulates a design for an application suc
   - Accessing files using .txt format
 
 ## How to Access
+Download the zip and either open and run it via an IDE
 
-  1. Download the zip and either
-  2. open and run it via an IDE
-OR...
-  2. Run the attached .jar file.
+*OR...*
+
+Run the attached .jar file.
