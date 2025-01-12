@@ -34,11 +34,12 @@ public class UserInputRegions implements ActionListener {
 	GridBagConstraints c = new GridBagConstraints();
 	JPanel discussingTheFilepath = new JPanel(new GridBagLayout());
 	JLabel label = new JLabel("Enter filepath: ");
-	JLabel errMessage = new JLabel("");
+	JLabel errMessage = new JLabel("Error");
 	JTextField filepathArea = new JTextField();
 	JButton confirm = new JButton("Confirm");
 	GridBagConstraints g = new GridBagConstraints();
 	public UserInputRegions() /* Starting account setup */ {
+		errMessage.setVisible(false);
 		c.insets = new Insets(0,0,0,0);
 		c.gridx = 0;
 		c.gridy = 0;
@@ -108,6 +109,8 @@ public class UserInputRegions implements ActionListener {
 		                System.out.println(line);
 		            }
 		            for (int i = 0; i < allLines.size(); i++) {
+		            	try {
+		            		errMessage.setVisible(false);
 		            	if (allLines.get(i).contains("TAG=")) {
 		            		if (tagTag.size() >= 0 && tagTag.size() < 10) {
 		            			tagTag.add(Integer.parseInt(allLines.get(i).substring(4)));
@@ -135,8 +138,11 @@ public class UserInputRegions implements ActionListener {
 		            		else
 		            	if (allLines.get(i).contains("PIN=")) {
 				            	pin.add(Integer.parseInt(allLines.get(i).substring(4)));
-				            }
-		            	
+				            } else;
+		            	} catch (Exception e9) {
+		            		e9.printStackTrace();
+		            		errMessage.setVisible(true);
+		            	}
 		            }
 		        } catch (IOException e2) {
 		            e2.printStackTrace();
