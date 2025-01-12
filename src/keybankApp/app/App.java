@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
@@ -43,8 +44,7 @@ public class App implements ActionListener {
 	GridBagConstraints accountConst = new GridBagConstraints();
 	JPanel bottomPanel = new JPanel();
 	JButton deposit = new JButton("Deposit");
-	JButton transfer = new JButton("Transfer");
-	JButton log = new JButton("Logs");
+	JButton website = new JButton("Website");
 	JButton edit = new JButton("Edit PIN");
 	JButton exit = new JButton("Exit");
 	ArrayList<String> ACCOUNT_NAMES = new ArrayList<String>();
@@ -103,11 +103,11 @@ public class App implements ActionListener {
 		toolbar.setFloatable(false);
 		bottomPanel.add(edit);
 		bottomPanel.add(deposit);
-		bottomPanel.add(transfer);
-		bottomPanel.add(log);
+		bottomPanel.add(website);
 		bottomPanel.add(exit);
 		edit.addActionListener(this);
 		deposit.addActionListener(this);
+		website.addActionListener(this);
 		exit.addActionListener(this);
 		bottomPanel.setBackground(Color.white);
 		kbLogo.setFont(kbTheme.getKbHeader());
@@ -183,6 +183,8 @@ public class App implements ActionListener {
 		else if (e.getSource().equals(exit)) {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 			System.exit(0);
+		} else if (e.getSource().equals(website)) {
+        	JOptionPane.showMessageDialog(null, "Visit us at: \nhttps://codepen.io/Daniel-OBrien-the-flexboxer/full/gbYezjQ", "Website Link", JOptionPane.PLAIN_MESSAGE);
 		}
 		
 		else if (e.getSource().equals(openAccButtons.get(0))) {
