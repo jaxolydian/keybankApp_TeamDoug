@@ -1,0 +1,16 @@
+TAG=0
+ACC=Military Budget
+CC=4457756908188046
+FN=United States
+LN=Military
+M=3000000.0
+CCV=999
+PIN=2040
+TAG=1
+ACC=Savings Budget
+CC=4457756908188046
+FN=United States
+LN=Military
+M=3000000.0
+CCV=667
+PIN=2020
