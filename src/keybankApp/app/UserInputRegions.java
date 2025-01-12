@@ -8,7 +8,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -83,12 +87,46 @@ public class UserInputRegions implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		ArrayList<String> accountNames = new ArrayList<String>();
+		ArrayList<String> ccNumbers = new ArrayList<String>();
+		ArrayList<String> fn = new ArrayList<String>();
+		ArrayList<String> ln = new ArrayList<String>();
+		ArrayList<Integer> tagTag = new ArrayList<Integer>();
 		if (e.getSource().equals(confirm)) {
 			File filePath = new File(filepathArea.getText());
 			if (!filePath.isFile()) {
 				System.out.println("No filepath input.");
 			} else {
-			new App();
+				try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+		            String line;
+		            ArrayList<String> allLines = new ArrayList<String>();
+		            while ((line = br.readLine()) != null) {
+		            	allLines.add(line);
+		                System.out.println(line);
+		            }
+		            for (int i = 0; i < allLines.size(); i++) {
+		            	if (allLines.get(i).contains("TAG=")) {
+		            		tagTag.add(Integer.parseInt(allLines.get(i).substring(4)));
+		            		
+		            	} 
+		            	if (allLines.get(i).contains("ACC=")) {
+		            		accountNames.add(allLines.get(i).substring(3));
+		            	}
+		            	if (allLines.get(i).contains("CC=")) {
+		            		ccNumbers.add(allLines.get(i).substring(2));
+		            	} 
+		            	if (allLines.get(i).contains("FN=")) {
+		            		fn.add(allLines.get(i).substring(2));
+		            	}
+		            	if (allLines.get(i).contains("LN=")) {
+		            		ln.add(allLines.get(i).substring(2));
+		            	}
+		            	
+		            }
+		        } catch (IOException e2) {
+		            e2.printStackTrace();
+		        }
+			new App(tagTag, accountNames, ccNumbers, fn, ln);
 			frame.dispose();
 			}
 		}

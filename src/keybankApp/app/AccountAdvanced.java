@@ -35,7 +35,7 @@ public class AccountAdvanced {
 		}
 		System.out.println();
 		setAccNumber(accountNumber);
-		frame.setTitle("Add Account");
+		frame.setTitle("Details");
 		frame.setMinimumSize(new Dimension(1080, 720));
 		frame.setSize(1080, 720);
 		toolbar.setFloatable(false);
